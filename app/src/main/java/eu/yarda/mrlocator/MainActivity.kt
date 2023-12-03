@@ -10,8 +10,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
 
 
@@ -83,7 +83,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-            fusedLocationClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY,
+            fusedLocationClient.getCurrentLocation(
+                Priority.PRIORITY_HIGH_ACCURACY,
                 cancellationTokenSource.token)
 
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
